@@ -14,11 +14,11 @@ variable "tags" {
 
 variable "ec2_ami" {
   description = "ec2-ami for west region"
-  type = string
-    default = ""
+  type        = string
+  default     = ""
 }
 
 variable "ec2_instance_type" {
   description = "EC2 instance type"
-  type = string
+  type        = string
 }
