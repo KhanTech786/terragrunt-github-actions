@@ -3,7 +3,7 @@ name: Terragrunt Apply
 on:
   push:
     branches:
-      - main  # Replace with your main branch name if different
+      - master  # Replace with your main branch name if different
 
 jobs:
   terragrunt_apply:
