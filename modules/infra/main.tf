@@ -11,5 +11,5 @@ resource "aws_instance" "my-terraforms-server" {
 
 
 resource "aws_s3_bucket" "khans_tg_bucket" {
-  bucket = "khans-tg-tf-bucket"
+  bucket =          "khans-tg-tf-bucket"
 }
