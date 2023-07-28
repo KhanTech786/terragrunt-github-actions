@@ -11,9 +11,9 @@ locals {
 }
 
 inputs = {
-  account_id        = local.vars.account_id
+  account_id                        = local.vars.account_id
   region            = local.vars.region
   tags              = local.vars.tags
-  ec2_ami           = local.vars.ec2_ami
+  ec2_ami                   = local.vars.ec2_ami
   ec2_instance_type = local.vars.ec2_instance_type
 }
