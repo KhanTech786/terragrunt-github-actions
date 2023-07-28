@@ -1,0 +1,8 @@
+account_id: [
+  254585114101
+]
+region: us-west-2
+ec2_ami: ami-05548f9cecf47b442
+ec2_instance_type: t2.micro
+tags:
+  kts:environment: dev

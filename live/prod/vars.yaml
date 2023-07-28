@@ -1,0 +1,8 @@
+account_id:
+  - 703942852599
+region: us-west-2
+other_region: us-east-1
+ec2_ami: ami-08541bb85074a743a
+ec2_instance_type: t2.micro
+tags:
+  ews:environment: dev
