@@ -42,7 +42,7 @@ jobs:
     # Initialize a new or existing Terragrunt working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Deploy In Dev East
       working-directory: live/dev/us-east-1/infra
-      run: terragrunt init && terragrunt apply -auto-approve
+      run: aws s3 ls
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.TF_ACCESS_KEY_DEV }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.TF_SECRET_DEV }}
