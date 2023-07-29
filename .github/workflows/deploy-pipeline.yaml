@@ -43,6 +43,8 @@ jobs:
     - name: Deploy In Dev East
       working-directory: live/dev/us-east-1/infra
       run: |
+        export AWS_ACCESS_KEY_ID: ${{ secrets.TF_ACCESS_KEY_DEV }}
+        export AWS_SECRET_ACCESS_KEY: ${{ secrets.TF_SECRET_DEV }}
         terragrunt init
         terragrunt apply -auto-approve
       env:
