@@ -43,12 +43,11 @@ jobs:
     - name: Deploy In Dev East
       working-directory: live/dev/us-east-1/infra
       run: |
-        echo $AWS_SECRET_ACCESS_KEY
+        export AWS_ACCESS_KEY_ID=AKIATWRTURX24CX6LN2S
+        export AWS_SECRET_ACCESS_KEY=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
         terragrunt init
         terragrunt apply -auto-approve
-      env:
-        AWS_ACCESS_KEY_ID: ${{ secrets.TF_ACCESS_KEY_DEV }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.TF_SECRET_DEV }}
+
 
       # On push to main, build or change infrastructure according to Terragrunt configuration files
       # Note: It is recommended to set up a required "strict" status check in your repository for "Terragrunt Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
