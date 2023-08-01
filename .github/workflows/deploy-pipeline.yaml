@@ -5,6 +5,10 @@ on:
     branches:
     - master
   pull_request:
+permissions:
+      id-token: write # This is required for requesting the JWT
+      contents: read  # This is required for actions/checkout
+      pull-requests: write
 
 jobs:
   Terragrunt:
@@ -21,6 +25,12 @@ jobs:
     # Checkout the repository to the GitHub Actions runner
     - name: Checkout
       uses: actions/checkout@v3
+
+    - name: Configure AWS credentials
+      with:
+        role-to-assume: ${{ secrets.DEV_AWS_ROLE }}
+        aws_region: us-east-1
+        role-session-name: GitHub-OIDC-TERRAFORM
 
     # Install the latest version of Terragrunt CLI and configure the Terragrunt CLI configuration file with a Terragrunt Cloud user API token
     - name: Setup Terraform v1.2.6
@@ -43,9 +53,6 @@ jobs:
     - name: Deploy In Dev East
       working-directory: live/dev/us-east-1/infra
       run: aws s3 ls
-      env:
-        AWS_ACCESS_KEY_ID: ${{ secrets.TF_ACCESS_KEY_DEV }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.TF_SECRET_DEV }}
 
       # On push to main, build or change infrastructure according to Terragrunt configuration files
       # Note: It is recommended to set up a required "strict" status check in your repository for "Terragrunt Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
