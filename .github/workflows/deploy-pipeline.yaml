@@ -58,7 +58,7 @@ jobs:
 
     - name: Terraform Format
       working-directory: modules/infra/
-      run: terraform-fmt
+      run: terraform fmt
     
     - name: Terragrunt Plan
       if: github.event_name == 'pull_request'
