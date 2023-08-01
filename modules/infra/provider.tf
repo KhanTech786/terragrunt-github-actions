@@ -26,7 +26,7 @@ provider "aws" {
   allowed_account_ids = var.account_id
   region              = var.other_region
 
-  default_tags {
+          default_tags {
     tags = var.tags
   }
   #   ignore_tags {
