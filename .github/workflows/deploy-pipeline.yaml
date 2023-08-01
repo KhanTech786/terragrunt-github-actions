@@ -64,7 +64,7 @@ jobs:
       id: plan
       if: github.event_name == 'pull_request'
       working-directory: live/dev/us-east-1/infra/
-      run: terragrunt plan
+      run: terragrunt plan -no-color
 
     # - uses: actions/github-scripts@v6
     #   if: github.event_name == 'pull_request'
