@@ -67,7 +67,7 @@ jobs:
 
     # Initialize a new or existing Terragrunt working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Deploy In Dev East
-      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+      if: github.ref == 'refs/heads/master' && github.event_name == 'push'
       working-directory: live/dev/us-east-1/infra/
       run: |
         terragrunt init --terragrunt-non-interactive
