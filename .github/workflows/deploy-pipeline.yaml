@@ -57,6 +57,7 @@ jobs:
     - name: Deploy In Dev East
       working-directory: live/dev/us-east-1/infra
       run: |
+        pwd
         terragrunt init
         terragrunt apply -auto-approve
 
