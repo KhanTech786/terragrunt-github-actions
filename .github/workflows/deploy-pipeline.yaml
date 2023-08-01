@@ -56,7 +56,9 @@ jobs:
     # Initialize a new or existing Terragrunt working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Deploy In Dev East
       working-directory: live/dev/us-east-1/infra
-      run: aws s3 ls
+      run: |
+        terragrunt init
+        terragrunt apply -auto-approve
 
       # On push to main, build or change infrastructure according to Terragrunt configuration files
       # Note: It is recommended to set up a required "strict" status check in your repository for "Terragrunt Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
