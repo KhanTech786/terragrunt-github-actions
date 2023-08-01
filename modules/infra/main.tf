@@ -5,7 +5,7 @@ resource "aws_instance" "my-terraforms-server" {
 
   tags = {
     CreatedBy = "Terragrunt"
-    Name      = "web-server-${var.region}"
+    Name      = "khan-web-server-${var.region}"
   }
 }
 
