@@ -59,7 +59,7 @@ jobs:
       run: |
         pwd
         ls
-        terragrunt init
+        terragrunt init --terragrunt-non-interactive
         terragrunt apply -auto-approve
 
       # On push to main, build or change infrastructure according to Terragrunt configuration files
