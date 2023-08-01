@@ -55,7 +55,7 @@ jobs:
 
     # Initialize a new or existing Terragrunt working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Deploy In Dev East
-      working-directory: live/dev/us-east-1/infra
+      working-directory: live/dev/us-east-1/infra/
       run: |
         pwd
         terragrunt init
