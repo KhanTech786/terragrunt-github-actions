@@ -12,7 +12,7 @@ permissions:
       pull-requests: write
 
 jobs:
-  Terragrunt:
+  DeployInfra:
     name: 'Terragrunt'
     runs-on: ubuntu-latest
     env:
@@ -52,13 +52,24 @@ jobs:
         sudo wget -q -O /bin/terragrunt "https://github.com/gruntwork-io/terragrunt/releases/download/v0.38.4/terragrunt_linux_amd64"
         sudo chmod +x /bin/terragrunt
         terragrunt -v
+    
+    - name: Terragrunt Format
+      run: terragrunt hclfmt
+
+    - name: Terraform Format
+      working-directory: modules/infra/
+      run: terraform-fmt
+    
+    - name: Terragrunt Plan
+      if: github.event_name == 'pull_request'
+      working-directory: live/dev/us-east-1/infra/
+      run: terragrunt plan
 
     # Initialize a new or existing Terragrunt working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Deploy In Dev East
+      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
       working-directory: live/dev/us-east-1/infra/
       run: |
-        pwd
-        ls
         terragrunt init --terragrunt-non-interactive
         terragrunt apply -auto-approve
 
