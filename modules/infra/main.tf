@@ -1,5 +1,5 @@
 resource "aws_instance" "my-terraforms-server" {
-  count         = 2
+  count         = 0
   provider      = aws.use1
   ami           = var.ec2_ami
   instance_type = var.ec2_instance_type
@@ -11,6 +11,6 @@ resource "aws_instance" "my-terraforms-server" {
 }
 
 
-resource "aws_s3_bucket" "khans_tg_bucket" {
-  bucket = "khans-tg-tf-bucket"
-}
+# resource "aws_s3_bucket" "khans_tg_bucket" {
+#   bucket = "khans-tg-tf-bucket"
+# }
