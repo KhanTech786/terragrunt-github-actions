@@ -1,3 +1,4 @@
 This repo is a test to show how github cicd can work on terraform plan apply.
 To use make changes o terraform code in a feature branch and create MR.
 The MR will plan repo once Merge is approved this will apply the terraform code
+(Branch protection rules are on and bypass is off)
